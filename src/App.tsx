@@ -5,8 +5,16 @@ import { useIsDesktop } from './useIsDesktop';
 
 type ViewMode = 'timeline' | 'map' | 'stories';
 
+const STEP_INFO = [
+  { title: 'Colle un lien TikTok', desc: "On extrait le lieu et on te propose une soirée complète autour, en quelques secondes." },
+  { title: 'Règle tes préférences', desc: 'Budget, ambiance, heure de début — la soirée s’adapte à ce que vous voulez vivre ce soir.' },
+  { title: 'Ta soirée, prête', desc: 'Un itinéraire complet avec 4 étapes, visible en timeline, sur une carte, ou façon stories.' },
+  { title: 'Embarque ta team', desc: 'Partage le plan, suis qui a répondu, et lancez la soirée ensemble.' },
+];
+
 export default function App() {
   const isDesktop = useIsDesktop();
+  const isWide = useIsDesktop(1180);
   const [step, setStep] = useState(0);
   const [linkValue, setLinkValue] = useState('');
   const [analyzing, setAnalyzing] = useState(false);
@@ -44,6 +52,52 @@ export default function App() {
 
   const currentStory = TIMELINE[storyIdx];
 
+  const logo = (
+    <div
+      style={{
+        fontFamily: "'Caprasimo',serif",
+        fontSize: isWide ? 26 : 22,
+        color: isWide ? '#f9f4ed' : '#201e1d',
+        display: 'flex',
+        alignItems: 'center',
+        gap: 8,
+      }}
+    >
+      <span
+        style={{
+          width: isWide ? 34 : 30,
+          height: isWide ? 34 : 30,
+          borderRadius: 999,
+          background: isWide ? '#f5ead8' : '#c67139',
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontSize: isWide ? 17 : 15,
+        }}
+      >
+        🌙
+      </span>
+      Soirée<span style={{ color: isWide ? '#f5ead8' : '#c67139' }}>.ly</span>
+    </div>
+  );
+
+  const stepDots = (
+    <div style={{ display: 'flex', gap: 6 }}>
+      {[0, 1, 2, 3].map((i) => (
+        <div
+          key={i}
+          style={{
+            width: i === step ? 18 : 6,
+            height: 6,
+            borderRadius: 3,
+            background: i <= step ? (isWide ? '#f5ead8' : '#c67139') : isWide ? 'rgba(249,244,237,.3)' : '#dcd3c4',
+            transition: 'width .2s',
+          }}
+        />
+      ))}
+    </div>
+  );
+
   return (
     <div
       style={{
@@ -52,53 +106,72 @@ export default function App() {
         background: '#f5ead8',
         display: 'flex',
         justifyContent: 'center',
-        padding: isDesktop ? '48px 32px' : '32px 16px',
         boxSizing: 'border-box',
       }}
     >
-      <div style={{ width: '100%', maxWidth: isDesktop ? 880 : 460, display: 'flex', flexDirection: 'column', gap: isDesktop ? 24 : 16 }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '4px 4px 0' }}>
+      <div
+        style={{
+          width: '100%',
+          maxWidth: isWide ? 1440 : undefined,
+          display: 'flex',
+          flexDirection: isWide ? 'row' : 'column',
+          alignItems: isWide ? 'stretch' : undefined,
+        }}
+      >
+        {isWide && (
           <div
             style={{
-              fontFamily: "'Caprasimo',serif",
-              fontSize: 22,
-              color: '#201e1d',
+              flex: '0 0 380px',
+              background: 'linear-gradient(165deg,#c67139,#8c491a)',
+              color: '#f9f4ed',
+              padding: '56px 44px',
+              boxSizing: 'border-box',
               display: 'flex',
-              alignItems: 'center',
-              gap: 8,
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              position: 'sticky',
+              top: 0,
+              height: '100vh',
             }}
           >
-            <span
-              style={{
-                width: 30,
-                height: 30,
-                borderRadius: 999,
-                background: '#c67139',
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: 15,
-              }}
-            >
-              🌙
-            </span>
-            Soirée<span style={{ color: '#c67139' }}>.ly</span>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
+              {logo}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+                <div style={{ fontFamily: "'Caprasimo',serif", fontSize: 34, lineHeight: 1.15 }}>{STEP_INFO[step].title}</div>
+                <div style={{ fontSize: 15, lineHeight: 1.6, color: 'rgba(249,244,237,.85)' }}>{STEP_INFO[step].desc}</div>
+              </div>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+              {stepDots}
+              <div style={{ fontSize: 12.5, color: 'rgba(249,244,237,.7)' }}>Étape {step + 1} / 4</div>
+            </div>
           </div>
-          <div style={{ display: 'flex', gap: 6 }}>
-            {[0, 1, 2, 3].map((i) => (
-              <div
-                key={i}
-                style={{
-                  width: i === step ? 18 : 6,
-                  height: 6,
-                  borderRadius: 3,
-                  background: i <= step ? '#c67139' : '#dcd3c4',
-                  transition: 'width .2s',
-                }}
-              />
-            ))}
-          </div>
-        </div>
+        )}
+
+        <div
+          style={{
+            flex: 1,
+            display: 'flex',
+            justifyContent: 'center',
+            padding: isWide ? '56px 48px' : isDesktop ? '48px 32px' : '32px 16px',
+            boxSizing: 'border-box',
+          }}
+        >
+          <div
+            style={{
+              width: '100%',
+              maxWidth: isWide ? 760 : isDesktop ? 880 : 460,
+              display: 'flex',
+              flexDirection: 'column',
+              gap: isDesktop ? 24 : 16,
+            }}
+          >
+            {!isWide && (
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '4px 4px 0' }}>
+                {logo}
+                {stepDots}
+              </div>
+            )}
 
         {step === 0 && (
           <div
@@ -638,6 +711,8 @@ export default function App() {
             </button>
           </div>
         )}
+          </div>
+        </div>
       </div>
     </div>
   );

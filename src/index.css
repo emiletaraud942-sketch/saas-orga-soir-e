@@ -4,8 +4,7 @@
 
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: #08060d;
+  font-family: 'Figtree', sans-serif;
 }
 
 #root {
@@ -13,7 +12,7 @@ body {
 }
 
 button {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Figtree', sans-serif;
 }
 
 ::-webkit-scrollbar {

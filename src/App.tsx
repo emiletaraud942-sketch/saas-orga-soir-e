@@ -55,10 +55,9 @@ export default function App() {
   const logo = (
     <div
       style={{
-        fontFamily: "'Sora',sans-serif",
-        fontWeight: 700,
+        fontFamily: "'Caprasimo',serif",
         fontSize: isWide ? 26 : 22,
-        color: '#f5f3ff',
+        color: isWide ? '#f9f4ed' : '#201e1d',
         display: 'flex',
         alignItems: 'center',
         gap: 8,
@@ -68,8 +67,8 @@ export default function App() {
         style={{
           width: isWide ? 34 : 30,
           height: isWide ? 34 : 30,
-          borderRadius: 10,
-          background: 'linear-gradient(135deg,#7c6cf0,#4b3fb0)',
+          borderRadius: 999,
+          background: isWide ? '#f5ead8' : '#c67139',
           display: 'inline-flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -78,7 +77,7 @@ export default function App() {
       >
         🌙
       </span>
-      Soirée<span style={{ color: '#b8aeff' }}>.ly</span>
+      Soirée<span style={{ color: isWide ? '#f5ead8' : '#c67139' }}>.ly</span>
     </div>
   );
 
@@ -91,7 +90,7 @@ export default function App() {
             width: i === step ? 18 : 6,
             height: 6,
             borderRadius: 3,
-            background: i <= step ? '#8b7cf6' : 'rgba(255,255,255,.14)',
+            background: i <= step ? (isWide ? '#f5ead8' : '#c67139') : isWide ? 'rgba(249,244,237,.3)' : '#dcd3c4',
             transition: 'width .2s',
           }}
         />
@@ -104,7 +103,7 @@ export default function App() {
       style={{
         width: '100%',
         minHeight: '100vh',
-        background: '#08060d',
+        background: '#f5ead8',
         display: 'flex',
         justifyContent: 'center',
         boxSizing: 'border-box',
@@ -123,9 +122,8 @@ export default function App() {
           <div
             style={{
               flex: '0 0 380px',
-              background: 'radial-gradient(circle at 20% 0%,#241f3d,#0b0a14 70%)',
-              borderRight: '1px solid rgba(140,120,255,.18)',
-              color: '#f5f3ff',
+              background: 'linear-gradient(165deg,#c67139,#8c491a)',
+              color: '#f9f4ed',
               padding: '56px 44px',
               boxSizing: 'border-box',
               display: 'flex',
@@ -139,13 +137,13 @@ export default function App() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
               {logo}
               <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-                <div style={{ fontFamily: "'Sora',sans-serif", fontSize: 34, lineHeight: 1.15 }}>{STEP_INFO[step].title}</div>
-                <div style={{ fontSize: 15, lineHeight: 1.6, color: 'rgba(255,255,255,.85)' }}>{STEP_INFO[step].desc}</div>
+                <div style={{ fontFamily: "'Caprasimo',serif", fontSize: 34, lineHeight: 1.15 }}>{STEP_INFO[step].title}</div>
+                <div style={{ fontSize: 15, lineHeight: 1.6, color: 'rgba(249,244,237,.85)' }}>{STEP_INFO[step].desc}</div>
               </div>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
               {stepDots}
-              <div style={{ fontSize: 12.5, color: 'rgba(255,255,255,.7)' }}>Étape {step + 1} / 4</div>
+              <div style={{ fontSize: 12.5, color: 'rgba(249,244,237,.7)' }}>Étape {step + 1} / 4</div>
             </div>
           </div>
         )}
@@ -187,14 +185,14 @@ export default function App() {
               alignSelf: 'center',
             }}
           >
-            <div style={{ padding: isDesktop ? '36px 32px' : '28px 24px', borderRadius: 28, background: '#14121f', border: '1px solid rgba(140,120,255,.14)', boxShadow: '0 8px 24px rgba(0,0,0,.4)' }}>
-              <div style={{ fontFamily: "'Sora',sans-serif", fontSize: 27, color: '#f5f3ff', lineHeight: 1.2, margin: '0 0 8px' }}>
+            <div style={{ padding: isDesktop ? '36px 32px' : '28px 24px', borderRadius: 28, background: '#ebddc5', boxShadow: '0 3px 10px rgba(46,43,37,.16)' }}>
+              <div style={{ fontFamily: "'Caprasimo',serif", fontSize: 27, color: '#201e1d', lineHeight: 1.2, margin: '0 0 8px' }}>
                 Tu as vu un endroit sur TikTok?
               </div>
               <div
                 style={{
                   fontSize: 14.5,
-                  color: 'rgba(255,255,255,.65)',
+                  color: 'color-mix(in srgb,#201e1d 65%,transparent)',
                   lineHeight: 1.5,
                   margin: '0 0 20px',
                 }}
@@ -207,8 +205,8 @@ export default function App() {
                     display: 'flex',
                     alignItems: 'center',
                     gap: 10,
-                    background: '#0b0a14',
-                    border: '1px solid rgba(140,120,255,.35)',
+                    background: '#f9f4ed',
+                    border: '1px solid color-mix(in srgb,#201e1d 16%,transparent)',
                     borderRadius: 999,
                     padding: '12px 18px',
                   }}
@@ -224,9 +222,9 @@ export default function App() {
                       background: 'transparent',
                       border: 'none',
                       outline: 'none',
-                      color: '#f5f3ff',
+                      color: '#201e1d',
                       fontSize: 14.5,
-                      fontFamily: 'Inter,sans-serif',
+                      fontFamily: 'Figtree,sans-serif',
                     }}
                   />
                 </div>
@@ -236,12 +234,12 @@ export default function App() {
                     alignSelf: 'flex-start',
                     background: 'none',
                     border: 'none',
-                    color: '#b8aeff',
+                    color: '#8c491a',
                     fontSize: 13,
                     fontWeight: 700,
                     cursor: 'pointer',
                     padding: '2px 0',
-                    fontFamily: 'Inter,sans-serif',
+                    fontFamily: 'Figtree,sans-serif',
                   }}
                 >
                   Essayer avec un exemple →
@@ -258,14 +256,13 @@ export default function App() {
                 gap: 10,
                 padding: 17,
                 borderRadius: 999,
-                border: analyzeReady ? '1px solid rgba(180,165,255,.5)' : '1px solid rgba(255,255,255,.06)',
-                background: analyzeReady ? 'linear-gradient(135deg,#7c6cf0,#4b3fb0)' : '#181622',
-                boxShadow: analyzeReady ? '0 6px 20px rgba(108,92,231,.35)' : 'none',
-                color: analyzeReady ? '#f5f3ff' : '#5c5770',
+                border: 'none',
+                background: analyzeReady ? '#c67139' : '#dcd3c4',
+                color: analyzeReady ? '#f5ead8' : '#82796a',
                 fontSize: 15,
-                fontWeight: 700,
+                fontWeight: 400,
                 cursor: analyzeReady ? 'pointer' : 'default',
-                fontFamily: "'Sora',sans-serif",
+                fontFamily: "'Caprasimo',serif",
               }}
             >
               {analyzing && (
@@ -291,7 +288,7 @@ export default function App() {
               ].map((b) => (
                 <div
                   key={b.label}
-                  style={{ fontSize: 12, color: 'rgba(255,255,255,.55)', display: 'flex', alignItems: 'center', gap: 5 }}
+                  style={{ fontSize: 12, color: 'color-mix(in srgb,#201e1d 55%,transparent)', display: 'flex', alignItems: 'center', gap: 5 }}
                 >
                   {b.icon} {b.label}
                 </div>
@@ -303,11 +300,11 @@ export default function App() {
         {step === 1 && (
           <div style={{ animation: 'rise .4s ease both', display: 'flex', flexDirection: 'column', gap: 18 }}>
             <div style={{ display: 'flex', flexDirection: isDesktop ? 'row' : 'column', gap: 20, alignItems: isDesktop ? 'stretch' : undefined }}>
-            <div style={{ flex: isDesktop ? '0 0 320px' : undefined, borderRadius: 28, overflow: 'hidden', background: '#14121f', border: '1px solid rgba(140,120,255,.14)', boxShadow: '0 8px 24px rgba(0,0,0,.4)' }}>
+            <div style={{ flex: isDesktop ? '0 0 320px' : undefined, borderRadius: 28, overflow: 'hidden', background: '#ebddc5', boxShadow: '0 3px 10px rgba(46,43,37,.16)' }}>
               <div
                 style={{
                   height: isDesktop ? 190 : 150,
-                  background: 'repeating-linear-gradient(135deg,#241f3d,#241f3d 12px,#24222e 12px,#24222e 24px)',
+                  background: 'repeating-linear-gradient(135deg,#e1eecc,#e1eecc 12px,#dcd3c4 12px,#dcd3c4 24px)',
                   filter: 'saturate(.6) contrast(.85) brightness(1.1)',
                   position: 'relative',
                   display: 'flex',
@@ -321,7 +318,7 @@ export default function App() {
                     top: 12,
                     right: 12,
                     background: 'rgba(32,30,29,.55)',
-                    color: '#f5f3ff',
+                    color: '#f9f4ed',
                     fontSize: 11,
                     fontWeight: 700,
                     padding: '5px 12px',
@@ -333,18 +330,18 @@ export default function App() {
                 >
                   🎥 Depuis TikTok
                 </div>
-                <div style={{ color: '#8a83a3', fontSize: 11, fontFamily: 'ui-monospace,monospace' }}>photo du lieu</div>
+                <div style={{ color: '#645c50', fontSize: 11, fontFamily: 'ui-monospace,monospace' }}>photo du lieu</div>
               </div>
               <div style={{ padding: '18px 20px' }}>
-                <div style={{ fontFamily: "'Sora',sans-serif", fontSize: 20, color: '#f5f3ff' }}>{PLACE.name}</div>
-                <div style={{ fontSize: 13, color: 'rgba(255,255,255,.60)', marginTop: 3 }}>
+                <div style={{ fontFamily: "'Caprasimo',serif", fontSize: 20, color: '#201e1d' }}>{PLACE.name}</div>
+                <div style={{ fontSize: 13, color: 'color-mix(in srgb,#201e1d 60%,transparent)', marginTop: 3 }}>
                   {PLACE.address} · {PLACE.vibe}
                 </div>
               </div>
             </div>
 
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 14, justifyContent: isDesktop ? 'center' : undefined }}>
-              <div style={{ fontSize: 12, fontWeight: 700, color: 'rgba(255,255,255,.55)', textTransform: 'uppercase', letterSpacing: '.08em' }}>
+              <div style={{ fontSize: 12, fontWeight: 700, color: 'color-mix(in srgb,#201e1d 55%,transparent)', textTransform: 'uppercase', letterSpacing: '.08em' }}>
                 Budget par personne
               </div>
               <div style={{ display: 'flex', gap: 8 }}>
@@ -355,7 +352,7 @@ export default function App() {
                 ))}
               </div>
 
-              <div style={{ fontSize: 12, fontWeight: 700, color: 'rgba(255,255,255,.55)', textTransform: 'uppercase', letterSpacing: '.08em', marginTop: 6 }}>
+              <div style={{ fontSize: 12, fontWeight: 700, color: 'color-mix(in srgb,#201e1d 55%,transparent)', textTransform: 'uppercase', letterSpacing: '.08em', marginTop: 6 }}>
                 Ambiance
               </div>
               <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
@@ -366,7 +363,7 @@ export default function App() {
                 ))}
               </div>
 
-              <div style={{ fontSize: 12, fontWeight: 700, color: 'rgba(255,255,255,.55)', textTransform: 'uppercase', letterSpacing: '.08em', marginTop: 6 }}>
+              <div style={{ fontSize: 12, fontWeight: 700, color: 'color-mix(in srgb,#201e1d 55%,transparent)', textTransform: 'uppercase', letterSpacing: '.08em', marginTop: 6 }}>
                 Heure de début
               </div>
               <div style={{ display: 'flex', gap: 8 }}>
@@ -386,13 +383,13 @@ export default function App() {
                   flex: 'none',
                   padding: '16px 18px',
                   borderRadius: 999,
-                  background: '#14121f',
-                  border: '1px solid rgba(255,255,255,.16)',
-                  color: '#f5f3ff',
+                  background: '#ebddc5',
+                  border: '1px solid color-mix(in srgb,#201e1d 16%,transparent)',
+                  color: '#201e1d',
                   fontSize: 14,
                   fontWeight: 700,
                   cursor: 'pointer',
-                  fontFamily: 'Inter,sans-serif',
+                  fontFamily: 'Figtree,sans-serif',
                 }}
               >
                 ←
@@ -403,14 +400,13 @@ export default function App() {
                   flex: 1,
                   padding: 16,
                   borderRadius: 999,
-                  border: '1px solid rgba(180,165,255,.5)',
-                  background: 'linear-gradient(135deg,#7c6cf0,#4b3fb0)',
-                  boxShadow: '0 6px 20px rgba(108,92,231,.35)',
-                  color: '#f5f3ff',
+                  border: 'none',
+                  background: '#c67139',
+                  color: '#f5ead8',
                   fontSize: 15,
-                  fontWeight: 700,
+                  fontWeight: 400,
                   cursor: 'pointer',
-                  fontFamily: "'Sora',sans-serif",
+                  fontFamily: "'Caprasimo',serif",
                 }}
               >
                 Générer la soirée ✨
@@ -422,13 +418,13 @@ export default function App() {
         {step === 2 && (
           <div style={{ animation: 'rise .4s ease both', display: 'flex', flexDirection: 'column', gap: 16 }}>
             <div>
-              <div style={{ fontFamily: "'Sora',sans-serif", fontSize: 23, color: '#f5f3ff' }}>Ta soirée du {PLACE.name} 🎉</div>
-              <div style={{ fontSize: 13.5, color: 'rgba(255,255,255,.60)', marginTop: 2 }}>
+              <div style={{ fontFamily: "'Caprasimo',serif", fontSize: 23, color: '#201e1d' }}>Ta soirée du {PLACE.name} 🎉</div>
+              <div style={{ fontSize: 13.5, color: 'color-mix(in srgb,#201e1d 60%,transparent)', marginTop: 2 }}>
                 {TIMES[time]} · {VIBES[vibe].l} · {BUDGETS[budget]}
               </div>
             </div>
 
-            <div style={{ display: 'flex', gap: 6, background: '#14121f', borderRadius: 999, padding: 5 }}>
+            <div style={{ display: 'flex', gap: 6, background: '#ebddc5', borderRadius: 999, padding: 5 }}>
               {(
                 [
                   { key: 'timeline', label: '📋 Timeline' },
@@ -447,9 +443,9 @@ export default function App() {
                     cursor: 'pointer',
                     fontSize: 12.5,
                     fontWeight: 700,
-                    fontFamily: 'Inter,sans-serif',
-                    background: viewMode === tab.key ? '#6c5ce7' : 'transparent',
-                    color: viewMode === tab.key ? '#f5f3ff' : '#8a83a3',
+                    fontFamily: 'Figtree,sans-serif',
+                    background: viewMode === tab.key ? '#c67139' : 'transparent',
+                    color: viewMode === tab.key ? '#f5ead8' : '#645c50',
                   }}
                 >
                   {tab.label}
@@ -464,17 +460,17 @@ export default function App() {
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: 20, flex: 'none' }}>
                       <div style={{ width: 11, height: 11, borderRadius: '50%', background: it.dotColor, marginTop: 6, flex: 'none' }} />
                       {i < TIMELINE.length - 1 && (
-                        <div style={{ width: 2, flex: 1, background: 'rgba(255,255,255,.14)', marginTop: 4 }} />
+                        <div style={{ width: 2, flex: 1, background: 'color-mix(in srgb,#201e1d 14%,transparent)', marginTop: 4 }} />
                       )}
                     </div>
                     <div style={{ flex: 1, paddingBottom: 20 }}>
-                      <div style={{ fontSize: 12, color: '#b8aeff', fontWeight: 700, letterSpacing: '.02em' }}>{it.time}</div>
-                      <div style={{ marginTop: 6, padding: '14px 18px', borderRadius: 20, background: '#14121f', border: '1px solid rgba(140,120,255,.12)', boxShadow: '0 2px 8px rgba(0,0,0,.3)' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontWeight: 700, color: '#f5f3ff', fontSize: 14.5, fontFamily: 'Inter,sans-serif' }}>
+                      <div style={{ fontSize: 12, color: '#8c491a', fontWeight: 700, letterSpacing: '.02em' }}>{it.time}</div>
+                      <div style={{ marginTop: 6, padding: '14px 18px', borderRadius: 20, background: '#ebddc5', boxShadow: '0 1px 2px rgba(46,43,37,.14)' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontWeight: 700, color: '#201e1d', fontSize: 14.5, fontFamily: 'Figtree,sans-serif' }}>
                           {it.emoji} {it.title}
                         </div>
-                        <div style={{ fontSize: 12.5, color: 'rgba(255,255,255,.60)', marginTop: 4, lineHeight: 1.4 }}>{it.desc}</div>
-                        <div style={{ fontSize: 11.5, color: 'rgba(255,255,255,.45)', marginTop: 6 }}>
+                        <div style={{ fontSize: 12.5, color: 'color-mix(in srgb,#201e1d 60%,transparent)', marginTop: 4, lineHeight: 1.4 }}>{it.desc}</div>
+                        <div style={{ fontSize: 11.5, color: 'color-mix(in srgb,#201e1d 45%,transparent)', marginTop: 6 }}>
                           📍 {it.distance} · {it.price}
                         </div>
                       </div>
@@ -490,7 +486,7 @@ export default function App() {
                   style={{
                     height: isDesktop ? 340 : 220,
                     borderRadius: 24,
-                    background: 'repeating-linear-gradient(45deg,#14121f,#14121f 10px,#241f3d 10px,#241f3d 20px)',
+                    background: 'repeating-linear-gradient(45deg,#ebddc5,#ebddc5 10px,#e1eecc 10px,#e1eecc 20px)',
                     position: 'relative',
                   }}
                 >
@@ -517,24 +513,24 @@ export default function App() {
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          boxShadow: '0 2px 10px rgba(0,0,0,.5)',
+                          boxShadow: '0 2px 8px rgba(46,43,37,.3)',
                         }}
                       >
                         <span style={{ transform: 'rotate(45deg)', fontSize: 11 }}>{it.emoji}</span>
                       </div>
                     </div>
                   ))}
-                  <div style={{ position: 'absolute', bottom: 10, right: 10, fontSize: 10.5, color: 'rgba(255,255,255,.40)', fontFamily: 'ui-monospace,monospace' }}>
+                  <div style={{ position: 'absolute', bottom: 10, right: 10, fontSize: 10.5, color: 'color-mix(in srgb,#201e1d 40%,transparent)', fontFamily: 'ui-monospace,monospace' }}>
                     carte du quartier
                   </div>
                 </div>
                 <div style={{ display: isDesktop ? 'grid' : 'flex', gridTemplateColumns: isDesktop ? '1fr 1fr' : undefined, flexDirection: isDesktop ? undefined : 'column', gap: 10 }}>
                   {TIMELINE.map((it) => (
-                    <div key={it.title} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', borderRadius: 16, background: '#14121f', border: '1px solid rgba(140,120,255,.12)' }}>
+                    <div key={it.title} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', borderRadius: 16, background: '#ebddc5' }}>
                       <span style={{ fontSize: 15 }}>{it.emoji}</span>
                       <div style={{ flex: 1 }}>
-                        <div style={{ fontSize: 13, fontWeight: 700, color: '#f5f3ff' }}>{it.title}</div>
-                        <div style={{ fontSize: 11, color: 'rgba(255,255,255,.45)' }}>
+                        <div style={{ fontSize: 13, fontWeight: 700, color: '#201e1d' }}>{it.title}</div>
+                        <div style={{ fontSize: 11, color: 'color-mix(in srgb,#201e1d 45%,transparent)' }}>
                           {it.time} · {it.distance}
                         </div>
                       </div>
@@ -566,23 +562,23 @@ export default function App() {
                     boxSizing: 'border-box',
                   }}
                 >
-                  <div style={{ position: 'absolute', top: 16, left: 22, right: 22, fontSize: 11, color: 'rgba(255,255,255,.9)', fontWeight: 700 }}>
+                  <div style={{ position: 'absolute', top: 16, left: 22, right: 22, fontSize: 11, color: 'rgba(249,244,237,.9)', fontWeight: 700 }}>
                     {currentStory.time}
                   </div>
                   <div style={{ fontSize: 44 }}>{currentStory.emoji}</div>
-                  <div style={{ fontFamily: "'Sora',sans-serif", fontSize: 23, color: '#f5f3ff', marginTop: 8 }}>{currentStory.title}</div>
-                  <div style={{ fontSize: 13, color: 'rgba(255,255,255,.9)', marginTop: 6, lineHeight: 1.4 }}>{currentStory.desc}</div>
+                  <div style={{ fontFamily: "'Caprasimo',serif", fontSize: 23, color: '#f9f4ed', marginTop: 8 }}>{currentStory.title}</div>
+                  <div style={{ fontSize: 13, color: 'rgba(249,244,237,.9)', marginTop: 6, lineHeight: 1.4 }}>{currentStory.desc}</div>
                 </div>
                 <div style={{ display: 'flex', gap: 10 }}>
                   <button
                     onClick={() => setStoryIdx((i) => Math.max(0, i - 1))}
-                    style={{ flex: 1, padding: 14, borderRadius: 999, background: '#14121f', color: '#f5f3ff', fontWeight: 700, cursor: 'pointer', border: 'none', fontFamily: 'Inter,sans-serif' }}
+                    style={{ flex: 1, padding: 14, borderRadius: 999, background: '#ebddc5', color: '#201e1d', fontWeight: 700, cursor: 'pointer', border: 'none', fontFamily: 'Figtree,sans-serif' }}
                   >
                     ← Précédent
                   </button>
                   <button
                     onClick={() => setStoryIdx((i) => Math.min(TIMELINE.length - 1, i + 1))}
-                    style={{ flex: 1, padding: 14, borderRadius: 999, background: '#14121f', color: '#f5f3ff', fontWeight: 700, cursor: 'pointer', border: 'none', fontFamily: 'Inter,sans-serif' }}
+                    style={{ flex: 1, padding: 14, borderRadius: 999, background: '#ebddc5', color: '#201e1d', fontWeight: 700, cursor: 'pointer', border: 'none', fontFamily: 'Figtree,sans-serif' }}
                   >
                     Suivant →
                   </button>
@@ -597,13 +593,13 @@ export default function App() {
                   flex: 'none',
                   padding: '16px 18px',
                   borderRadius: 999,
-                  background: '#14121f',
-                  border: '1px solid rgba(255,255,255,.16)',
-                  color: '#f5f3ff',
+                  background: '#ebddc5',
+                  border: '1px solid color-mix(in srgb,#201e1d 16%,transparent)',
+                  color: '#201e1d',
                   fontSize: 14,
                   fontWeight: 700,
                   cursor: 'pointer',
-                  fontFamily: 'Inter,sans-serif',
+                  fontFamily: 'Figtree,sans-serif',
                 }}
               >
                 ←
@@ -614,14 +610,13 @@ export default function App() {
                   flex: 1,
                   padding: 16,
                   borderRadius: 999,
-                  border: '1px solid rgba(180,165,255,.5)',
-                  background: 'linear-gradient(135deg,#7c6cf0,#4b3fb0)',
-                  boxShadow: '0 6px 20px rgba(108,92,231,.35)',
-                  color: '#f5f3ff',
+                  border: 'none',
+                  background: '#c67139',
+                  color: '#f5ead8',
                   fontSize: 15,
-                  fontWeight: 700,
+                  fontWeight: 400,
                   cursor: 'pointer',
-                  fontFamily: "'Sora',sans-serif",
+                  fontFamily: "'Caprasimo',serif",
                 }}
               >
                 Partager avec la team →
@@ -642,15 +637,15 @@ export default function App() {
               alignSelf: 'center',
             }}
           >
-            <div style={{ fontFamily: "'Sora',sans-serif", fontSize: 23, color: '#f5f3ff' }}>Envoie à la team 📤</div>
+            <div style={{ fontFamily: "'Caprasimo',serif", fontSize: 23, color: '#201e1d' }}>Envoie à la team 📤</div>
 
-            <div style={{ padding: '14px 18px', borderRadius: 999, background: '#14121f', border: '1px solid rgba(140,120,255,.14)', display: 'flex', alignItems: 'center', gap: 10 }}>
+            <div style={{ padding: '14px 18px', borderRadius: 999, background: '#ebddc5', display: 'flex', alignItems: 'center', gap: 10 }}>
               <span style={{ fontSize: 15 }}>🔗</span>
               <div
                 style={{
                   flex: 1,
                   fontSize: 12.5,
-                  color: 'rgba(255,255,255,.55)',
+                  color: 'color-mix(in srgb,#201e1d 55%,transparent)',
                   fontFamily: 'ui-monospace,monospace',
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
@@ -661,19 +656,19 @@ export default function App() {
               </div>
               <button
                 onClick={handleCopy}
-                style={{ flex: 'none', padding: '8px 16px', borderRadius: 999, background: '#241f3d', color: '#b8aeff', border: 'none', fontSize: 12.5, fontWeight: 700, cursor: 'pointer' }}
+                style={{ flex: 'none', padding: '8px 16px', borderRadius: 999, background: '#ffe1d0', color: '#8c491a', border: 'none', fontSize: 12.5, fontWeight: 700, cursor: 'pointer' }}
               >
                 {copied ? 'Copié ✓' : 'Copier'}
               </button>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              <div style={{ fontSize: 12, fontWeight: 700, color: 'rgba(255,255,255,.55)', textTransform: 'uppercase', letterSpacing: '.08em' }}>
+              <div style={{ fontSize: 12, fontWeight: 700, color: 'color-mix(in srgb,#201e1d 55%,transparent)', textTransform: 'uppercase', letterSpacing: '.08em' }}>
                 Qui a répondu
               </div>
               <div style={{ display: isDesktop ? 'grid' : 'flex', gridTemplateColumns: isDesktop ? '1fr 1fr' : undefined, flexDirection: isDesktop ? undefined : 'column', gap: 10 }}>
               {FRIENDS.map((f) => (
-                <div key={f.name} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 16px', borderRadius: 20, background: '#14121f', border: '1px solid rgba(140,120,255,.12)' }}>
+                <div key={f.name} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 16px', borderRadius: 20, background: '#ebddc5' }}>
                   <div
                     style={{
                       width: 36,
@@ -684,7 +679,7 @@ export default function App() {
                       alignItems: 'center',
                       justifyContent: 'center',
                       fontWeight: 700,
-                      color: '#f5f3ff',
+                      color: '#f9f4ed',
                       fontSize: 14,
                       flex: 'none',
                     }}
@@ -692,8 +687,8 @@ export default function App() {
                     {f.initial}
                   </div>
                   <div style={{ flex: 1 }}>
-                    <div style={{ fontSize: 13.5, fontWeight: 700, color: '#f5f3ff' }}>{f.name}</div>
-                    <div style={{ fontSize: 11.5, color: 'rgba(255,255,255,.45)' }}>{f.status}</div>
+                    <div style={{ fontSize: 13.5, fontWeight: 700, color: '#201e1d' }}>{f.name}</div>
+                    <div style={{ fontSize: 11.5, color: 'color-mix(in srgb,#201e1d 45%,transparent)' }}>{f.status}</div>
                   </div>
                   <div style={{ fontSize: 18 }}>{f.reaction}</div>
                 </div>
@@ -701,16 +696,16 @@ export default function App() {
               </div>
             </div>
 
-            <div style={{ padding: 18, borderRadius: 24, background: '#122a1c', display: 'flex', alignItems: 'center', gap: 10 }}>
+            <div style={{ padding: 18, borderRadius: 24, background: '#f0fae1', display: 'flex', alignItems: 'center', gap: 10 }}>
               <div style={{ flex: 1 }}>
-                <div style={{ fontSize: 13, fontWeight: 700, color: '#f5f3ff' }}>3/4 ont validé le plan</div>
-                <div style={{ fontSize: 11.5, color: 'rgba(255,255,255,.55)', marginTop: 2 }}>La majorité l'emporte à 20h</div>
+                <div style={{ fontSize: 13, fontWeight: 700, color: '#201e1d' }}>3/4 ont validé le plan</div>
+                <div style={{ fontSize: 11.5, color: 'color-mix(in srgb,#201e1d 55%,transparent)', marginTop: 2 }}>La majorité l'emporte à 20h</div>
               </div>
             </div>
 
             <button
               onClick={() => setStep(2)}
-              style={{ padding: 15, borderRadius: 999, background: '#14121f', border: 'none', color: '#f5f3ff', fontSize: 14, fontWeight: 700, cursor: 'pointer', fontFamily: 'Inter,sans-serif' }}
+              style={{ padding: 15, borderRadius: 999, background: '#ebddc5', border: 'none', color: '#201e1d', fontSize: 14, fontWeight: 700, cursor: 'pointer', fontFamily: 'Figtree,sans-serif' }}
             >
               ← Retour au plan
             </button>

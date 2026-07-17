@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { BUDGETS, FRIENDS, PLACE, TIMELINE, TIMES, VIBES } from './data';
 import { chipStyle } from './chipStyle';
+import { useIsDesktop } from './useIsDesktop';
 
 type ViewMode = 'timeline' | 'map' | 'stories';
 
 export default function App() {
+  const isDesktop = useIsDesktop();
   const [step, setStep] = useState(0);
   const [linkValue, setLinkValue] = useState('');
   const [analyzing, setAnalyzing] = useState(false);
@@ -50,11 +52,11 @@ export default function App() {
         background: '#f5ead8',
         display: 'flex',
         justifyContent: 'center',
-        padding: '32px 16px',
+        padding: isDesktop ? '48px 32px' : '32px 16px',
         boxSizing: 'border-box',
       }}
     >
-      <div style={{ width: '100%', maxWidth: 460, display: 'flex', flexDirection: 'column', gap: 16 }}>
+      <div style={{ width: '100%', maxWidth: isDesktop ? 880 : 460, display: 'flex', flexDirection: 'column', gap: isDesktop ? 24 : 16 }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '4px 4px 0' }}>
           <div
             style={{
@@ -99,8 +101,18 @@ export default function App() {
         </div>
 
         {step === 0 && (
-          <div style={{ animation: 'rise .4s ease both', display: 'flex', flexDirection: 'column', gap: 20 }}>
-            <div style={{ padding: '28px 24px', borderRadius: 28, background: '#ebddc5', boxShadow: '0 3px 10px rgba(46,43,37,.16)' }}>
+          <div
+            style={{
+              animation: 'rise .4s ease both',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 20,
+              width: '100%',
+              maxWidth: isDesktop ? 520 : undefined,
+              alignSelf: 'center',
+            }}
+          >
+            <div style={{ padding: isDesktop ? '36px 32px' : '28px 24px', borderRadius: 28, background: '#ebddc5', boxShadow: '0 3px 10px rgba(46,43,37,.16)' }}>
               <div style={{ fontFamily: "'Caprasimo',serif", fontSize: 27, color: '#201e1d', lineHeight: 1.2, margin: '0 0 8px' }}>
                 Tu as vu un endroit sur TikTok?
               </div>
@@ -214,10 +226,11 @@ export default function App() {
 
         {step === 1 && (
           <div style={{ animation: 'rise .4s ease both', display: 'flex', flexDirection: 'column', gap: 18 }}>
-            <div style={{ borderRadius: 28, overflow: 'hidden', background: '#ebddc5', boxShadow: '0 3px 10px rgba(46,43,37,.16)' }}>
+            <div style={{ display: 'flex', flexDirection: isDesktop ? 'row' : 'column', gap: 20, alignItems: isDesktop ? 'stretch' : undefined }}>
+            <div style={{ flex: isDesktop ? '0 0 320px' : undefined, borderRadius: 28, overflow: 'hidden', background: '#ebddc5', boxShadow: '0 3px 10px rgba(46,43,37,.16)' }}>
               <div
                 style={{
-                  height: 150,
+                  height: isDesktop ? 190 : 150,
                   background: 'repeating-linear-gradient(135deg,#e1eecc,#e1eecc 12px,#dcd3c4 12px,#dcd3c4 24px)',
                   filter: 'saturate(.6) contrast(.85) brightness(1.1)',
                   position: 'relative',
@@ -254,7 +267,7 @@ export default function App() {
               </div>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 14, justifyContent: isDesktop ? 'center' : undefined }}>
               <div style={{ fontSize: 12, fontWeight: 700, color: 'color-mix(in srgb,#201e1d 55%,transparent)', textTransform: 'uppercase', letterSpacing: '.08em' }}>
                 Budget par personne
               </div>
@@ -287,6 +300,7 @@ export default function App() {
                   </button>
                 ))}
               </div>
+            </div>
             </div>
 
             <div style={{ display: 'flex', gap: 10 }}>
@@ -367,7 +381,7 @@ export default function App() {
             </div>
 
             {viewMode === 'timeline' && (
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', maxWidth: isDesktop ? 640 : undefined, alignSelf: isDesktop ? 'center' : undefined, width: '100%' }}>
                 {TIMELINE.map((it, i) => (
                   <div key={it.title} style={{ display: 'flex', gap: 14 }}>
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: 20, flex: 'none' }}>
@@ -397,7 +411,7 @@ export default function App() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                 <div
                   style={{
-                    height: 220,
+                    height: isDesktop ? 340 : 220,
                     borderRadius: 24,
                     background: 'repeating-linear-gradient(45deg,#ebddc5,#ebddc5 10px,#e1eecc 10px,#e1eecc 20px)',
                     position: 'relative',
@@ -437,22 +451,24 @@ export default function App() {
                     carte du quartier
                   </div>
                 </div>
-                {TIMELINE.map((it) => (
-                  <div key={it.title} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', borderRadius: 16, background: '#ebddc5' }}>
-                    <span style={{ fontSize: 15 }}>{it.emoji}</span>
-                    <div style={{ flex: 1 }}>
-                      <div style={{ fontSize: 13, fontWeight: 700, color: '#201e1d' }}>{it.title}</div>
-                      <div style={{ fontSize: 11, color: 'color-mix(in srgb,#201e1d 45%,transparent)' }}>
-                        {it.time} · {it.distance}
+                <div style={{ display: isDesktop ? 'grid' : 'flex', gridTemplateColumns: isDesktop ? '1fr 1fr' : undefined, flexDirection: isDesktop ? undefined : 'column', gap: 10 }}>
+                  {TIMELINE.map((it) => (
+                    <div key={it.title} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', borderRadius: 16, background: '#ebddc5' }}>
+                      <span style={{ fontSize: 15 }}>{it.emoji}</span>
+                      <div style={{ flex: 1 }}>
+                        <div style={{ fontSize: 13, fontWeight: 700, color: '#201e1d' }}>{it.title}</div>
+                        <div style={{ fontSize: 11, color: 'color-mix(in srgb,#201e1d 45%,transparent)' }}>
+                          {it.time} · {it.distance}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             )}
 
             {viewMode === 'stories' && (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 14, maxWidth: isDesktop ? 320 : undefined, alignSelf: isDesktop ? 'center' : undefined, width: '100%' }}>
                 <div style={{ display: 'flex', gap: 5 }}>
                   {TIMELINE.map((it) => (
                     <div key={it.title} style={{ height: 3, flex: 1, borderRadius: 2, background: it.dotColor }} />
@@ -537,7 +553,17 @@ export default function App() {
         )}
 
         {step === 3 && (
-          <div style={{ animation: 'rise .4s ease both', display: 'flex', flexDirection: 'column', gap: 18 }}>
+          <div
+            style={{
+              animation: 'rise .4s ease both',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 18,
+              width: '100%',
+              maxWidth: isDesktop ? 620 : undefined,
+              alignSelf: 'center',
+            }}
+          >
             <div style={{ fontFamily: "'Caprasimo',serif", fontSize: 23, color: '#201e1d' }}>Envoie à la team 📤</div>
 
             <div style={{ padding: '14px 18px', borderRadius: 999, background: '#ebddc5', display: 'flex', alignItems: 'center', gap: 10 }}>
@@ -567,6 +593,7 @@ export default function App() {
               <div style={{ fontSize: 12, fontWeight: 700, color: 'color-mix(in srgb,#201e1d 55%,transparent)', textTransform: 'uppercase', letterSpacing: '.08em' }}>
                 Qui a répondu
               </div>
+              <div style={{ display: isDesktop ? 'grid' : 'flex', gridTemplateColumns: isDesktop ? '1fr 1fr' : undefined, flexDirection: isDesktop ? undefined : 'column', gap: 10 }}>
               {FRIENDS.map((f) => (
                 <div key={f.name} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 16px', borderRadius: 20, background: '#ebddc5' }}>
                   <div
@@ -593,6 +620,7 @@ export default function App() {
                   <div style={{ fontSize: 18 }}>{f.reaction}</div>
                 </div>
               ))}
+              </div>
             </div>
 
             <div style={{ padding: 18, borderRadius: 24, background: '#f0fae1', display: 'flex', alignItems: 'center', gap: 10 }}>

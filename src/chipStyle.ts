@@ -12,7 +12,8 @@ export function chipStyle(active: boolean): CSSProperties {
         fontSize: 13,
         fontWeight: 700,
         cursor: 'pointer',
-        fontFamily: 'Figtree, sans-serif',
+        letterSpacing: '.03em',
+        fontFamily: 'DM Sans, sans-serif',
       }
     : {
         flex: 1,
@@ -24,6 +25,7 @@ export function chipStyle(active: boolean): CSSProperties {
         fontSize: 13,
         fontWeight: 600,
         cursor: 'pointer',
-        fontFamily: 'Figtree, sans-serif',
+        letterSpacing: '.03em',
+        fontFamily: 'DM Sans, sans-serif',
       };
 }

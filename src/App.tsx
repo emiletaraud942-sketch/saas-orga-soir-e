@@ -55,7 +55,7 @@ export default function App() {
   const logo = (
     <div
       style={{
-        fontFamily: "'Caprasimo',serif",
+        fontFamily: "'Fraunces',serif", fontStyle: 'italic',
         fontSize: isWide ? 26 : 22,
         color: isWide ? '#f9f4ed' : '#201e1d',
         display: 'flex',
@@ -137,7 +137,7 @@ export default function App() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
               {logo}
               <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-                <div style={{ fontFamily: "'Caprasimo',serif", fontSize: 34, lineHeight: 1.15 }}>{STEP_INFO[step].title}</div>
+                <div style={{ fontFamily: "'Fraunces',serif", fontStyle: 'italic', fontSize: 34, lineHeight: 1.15 }}>{STEP_INFO[step].title}</div>
                 <div style={{ fontSize: 15, lineHeight: 1.6, color: 'rgba(249,244,237,.85)' }}>{STEP_INFO[step].desc}</div>
               </div>
             </div>
@@ -186,7 +186,7 @@ export default function App() {
             }}
           >
             <div style={{ padding: isDesktop ? '36px 32px' : '28px 24px', borderRadius: 28, background: '#ebddc5', boxShadow: '0 3px 10px rgba(46,43,37,.16)' }}>
-              <div style={{ fontFamily: "'Caprasimo',serif", fontSize: 27, color: '#201e1d', lineHeight: 1.2, margin: '0 0 8px' }}>
+              <div style={{ fontFamily: "'Fraunces',serif", fontStyle: 'italic', fontSize: 27, color: '#201e1d', lineHeight: 1.2, margin: '0 0 8px' }}>
                 Tu as vu un endroit sur TikTok?
               </div>
               <div
@@ -224,7 +224,7 @@ export default function App() {
                       outline: 'none',
                       color: '#201e1d',
                       fontSize: 14.5,
-                      fontFamily: 'Figtree,sans-serif',
+                      fontFamily: 'DM Sans,sans-serif',
                     }}
                   />
                 </div>
@@ -239,7 +239,7 @@ export default function App() {
                     fontWeight: 700,
                     cursor: 'pointer',
                     padding: '2px 0',
-                    fontFamily: 'Figtree,sans-serif',
+                    fontFamily: 'DM Sans,sans-serif',
                   }}
                 >
                   Essayer avec un exemple →
@@ -254,15 +254,16 @@ export default function App() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 gap: 10,
-                padding: 17,
+                padding: '17px 32px',
                 borderRadius: 999,
                 border: 'none',
-                background: analyzeReady ? '#c67139' : '#dcd3c4',
-                color: analyzeReady ? '#f5ead8' : '#82796a',
-                fontSize: 15,
-                fontWeight: 400,
+                background: analyzeReady ? '#d4af6a' : '#dcd3c4',
+                color: analyzeReady ? '#2e2a1f' : '#82796a',
+                fontSize: 13,
+                fontWeight: 700,
+                letterSpacing: '.06em',
                 cursor: analyzeReady ? 'pointer' : 'default',
-                fontFamily: "'Caprasimo',serif",
+                fontFamily: "'DM Sans',sans-serif",
               }}
             >
               {analyzing && (
@@ -333,7 +334,7 @@ export default function App() {
                 <div style={{ color: '#645c50', fontSize: 11, fontFamily: 'ui-monospace,monospace' }}>photo du lieu</div>
               </div>
               <div style={{ padding: '18px 20px' }}>
-                <div style={{ fontFamily: "'Caprasimo',serif", fontSize: 20, color: '#201e1d' }}>{PLACE.name}</div>
+                <div style={{ fontFamily: "'Fraunces',serif", fontStyle: 'italic', fontSize: 20, color: '#201e1d' }}>{PLACE.name}</div>
                 <div style={{ fontSize: 13, color: 'color-mix(in srgb,#201e1d 60%,transparent)', marginTop: 3 }}>
                   {PLACE.address} · {PLACE.vibe}
                 </div>
@@ -389,7 +390,7 @@ export default function App() {
                   fontSize: 14,
                   fontWeight: 700,
                   cursor: 'pointer',
-                  fontFamily: 'Figtree,sans-serif',
+                  fontFamily: 'DM Sans,sans-serif',
                 }}
               >
                 ←
@@ -398,15 +399,16 @@ export default function App() {
                 onClick={handleGenerate}
                 style={{
                   flex: 1,
-                  padding: 16,
+                  padding: '17px 32px',
                   borderRadius: 999,
                   border: 'none',
-                  background: '#c67139',
-                  color: '#f5ead8',
-                  fontSize: 15,
-                  fontWeight: 400,
+                  background: '#d4af6a',
+                  color: '#2e2a1f',
+                  fontSize: 13,
+                  fontWeight: 700,
+                  letterSpacing: '.06em',
                   cursor: 'pointer',
-                  fontFamily: "'Caprasimo',serif",
+                  fontFamily: "'DM Sans',sans-serif",
                 }}
               >
                 Générer la soirée ✨
@@ -418,7 +420,7 @@ export default function App() {
         {step === 2 && (
           <div style={{ animation: 'rise .4s ease both', display: 'flex', flexDirection: 'column', gap: 16 }}>
             <div>
-              <div style={{ fontFamily: "'Caprasimo',serif", fontSize: 23, color: '#201e1d' }}>Ta soirée du {PLACE.name} 🎉</div>
+              <div style={{ fontFamily: "'Fraunces',serif", fontStyle: 'italic', fontSize: 23, color: '#201e1d' }}>Ta soirée du {PLACE.name} 🎉</div>
               <div style={{ fontSize: 13.5, color: 'color-mix(in srgb,#201e1d 60%,transparent)', marginTop: 2 }}>
                 {TIMES[time]} · {VIBES[vibe].l} · {BUDGETS[budget]}
               </div>
@@ -443,7 +445,7 @@ export default function App() {
                     cursor: 'pointer',
                     fontSize: 12.5,
                     fontWeight: 700,
-                    fontFamily: 'Figtree,sans-serif',
+                    fontFamily: 'DM Sans,sans-serif',
                     background: viewMode === tab.key ? '#c67139' : 'transparent',
                     color: viewMode === tab.key ? '#f5ead8' : '#645c50',
                   }}
@@ -466,7 +468,7 @@ export default function App() {
                     <div style={{ flex: 1, paddingBottom: 20 }}>
                       <div style={{ fontSize: 12, color: '#8c491a', fontWeight: 700, letterSpacing: '.02em' }}>{it.time}</div>
                       <div style={{ marginTop: 6, padding: '14px 18px', borderRadius: 20, background: '#ebddc5', boxShadow: '0 1px 2px rgba(46,43,37,.14)' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontWeight: 700, color: '#201e1d', fontSize: 14.5, fontFamily: 'Figtree,sans-serif' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontWeight: 700, color: '#201e1d', fontSize: 14.5, fontFamily: 'DM Sans,sans-serif' }}>
                           {it.emoji} {it.title}
                         </div>
                         <div style={{ fontSize: 12.5, color: 'color-mix(in srgb,#201e1d 60%,transparent)', marginTop: 4, lineHeight: 1.4 }}>{it.desc}</div>
@@ -566,19 +568,19 @@ export default function App() {
                     {currentStory.time}
                   </div>
                   <div style={{ fontSize: 44 }}>{currentStory.emoji}</div>
-                  <div style={{ fontFamily: "'Caprasimo',serif", fontSize: 23, color: '#f9f4ed', marginTop: 8 }}>{currentStory.title}</div>
+                  <div style={{ fontFamily: "'Fraunces',serif", fontStyle: 'italic', fontSize: 23, color: '#f9f4ed', marginTop: 8 }}>{currentStory.title}</div>
                   <div style={{ fontSize: 13, color: 'rgba(249,244,237,.9)', marginTop: 6, lineHeight: 1.4 }}>{currentStory.desc}</div>
                 </div>
                 <div style={{ display: 'flex', gap: 10 }}>
                   <button
                     onClick={() => setStoryIdx((i) => Math.max(0, i - 1))}
-                    style={{ flex: 1, padding: 14, borderRadius: 999, background: '#ebddc5', color: '#201e1d', fontWeight: 700, cursor: 'pointer', border: 'none', fontFamily: 'Figtree,sans-serif' }}
+                    style={{ flex: 1, padding: 14, borderRadius: 999, background: '#ebddc5', color: '#201e1d', fontWeight: 700, cursor: 'pointer', border: 'none', fontFamily: 'DM Sans,sans-serif' }}
                   >
                     ← Précédent
                   </button>
                   <button
                     onClick={() => setStoryIdx((i) => Math.min(TIMELINE.length - 1, i + 1))}
-                    style={{ flex: 1, padding: 14, borderRadius: 999, background: '#ebddc5', color: '#201e1d', fontWeight: 700, cursor: 'pointer', border: 'none', fontFamily: 'Figtree,sans-serif' }}
+                    style={{ flex: 1, padding: 14, borderRadius: 999, background: '#ebddc5', color: '#201e1d', fontWeight: 700, cursor: 'pointer', border: 'none', fontFamily: 'DM Sans,sans-serif' }}
                   >
                     Suivant →
                   </button>
@@ -599,7 +601,7 @@ export default function App() {
                   fontSize: 14,
                   fontWeight: 700,
                   cursor: 'pointer',
-                  fontFamily: 'Figtree,sans-serif',
+                  fontFamily: 'DM Sans,sans-serif',
                 }}
               >
                 ←
@@ -608,15 +610,16 @@ export default function App() {
                 onClick={() => setStep(3)}
                 style={{
                   flex: 1,
-                  padding: 16,
+                  padding: '17px 32px',
                   borderRadius: 999,
                   border: 'none',
-                  background: '#c67139',
-                  color: '#f5ead8',
-                  fontSize: 15,
-                  fontWeight: 400,
+                  background: '#d4af6a',
+                  color: '#2e2a1f',
+                  fontSize: 13,
+                  fontWeight: 700,
+                  letterSpacing: '.06em',
                   cursor: 'pointer',
-                  fontFamily: "'Caprasimo',serif",
+                  fontFamily: "'DM Sans',sans-serif",
                 }}
               >
                 Partager avec la team →
@@ -637,7 +640,7 @@ export default function App() {
               alignSelf: 'center',
             }}
           >
-            <div style={{ fontFamily: "'Caprasimo',serif", fontSize: 23, color: '#201e1d' }}>Envoie à la team 📤</div>
+            <div style={{ fontFamily: "'Fraunces',serif", fontStyle: 'italic', fontSize: 23, color: '#201e1d' }}>Envoie à la team 📤</div>
 
             <div style={{ padding: '14px 18px', borderRadius: 999, background: '#ebddc5', display: 'flex', alignItems: 'center', gap: 10 }}>
               <span style={{ fontSize: 15 }}>🔗</span>
@@ -705,7 +708,7 @@ export default function App() {
 
             <button
               onClick={() => setStep(2)}
-              style={{ padding: 15, borderRadius: 999, background: '#ebddc5', border: 'none', color: '#201e1d', fontSize: 14, fontWeight: 700, cursor: 'pointer', fontFamily: 'Figtree,sans-serif' }}
+              style={{ padding: 15, borderRadius: 999, background: '#ebddc5', border: 'none', color: '#201e1d', fontSize: 14, fontWeight: 700, cursor: 'pointer', fontFamily: 'DM Sans,sans-serif' }}
             >
               ← Retour au plan
             </button>
